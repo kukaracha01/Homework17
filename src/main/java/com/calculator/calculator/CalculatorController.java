@@ -12,17 +12,33 @@ public class CalculatorController {
         this.calculatorService = calculatorService;
     }
 
-    @GetMapping
-    public String welcome() {
-        return calculatorService.welcome();
-    }
-
     @GetMapping(path = "/calculator")
     public String answerWelcome(String welcomeToCalculator) {
         return calculatorService.welcomeToCalculator();
     }
-    @GetMapping(path = "/calculator")
-    public int answerPlus(@RequestParam("plus") int sum) {
-        return calculatorService.plus(5, 5);
+
+    @GetMapping(path = "/calculator/plus")
+    public String answerPlus(@RequestParam("num1") int num1,
+                          @RequestParam("num1") int num2) {
+        int sum = calculatorService.plus(num1, num2);
+        return num1 + " + " + num2 + " = " + sum;
+    }
+    @GetMapping(path = "/calculator/minus")
+    public String answerMinus(@RequestParam("num1") int num1,
+                          @RequestParam("num1") int num2) {
+        int sum = calculatorService.minus(num1, num2);
+        return num1 + " - " + num2 + " = " + sum;
+    }
+    @GetMapping(path = "/calculator/multiply")
+    public String answerMultiply(@RequestParam("num1") int num1,
+                           @RequestParam("num1") int num2) {
+        int sum = calculatorService.multiply(num1, num2);
+        return num1 + " * " + num2 + " = " + sum;
+    }
+    @GetMapping(path = "/calculator/divide")
+    public String answerDivide(@RequestParam("num1") int num1,
+                           @RequestParam("num1") int num2) {
+        int sum = calculatorService.divide(num1, num2);
+        return num1 + " / " + num2 + " = " + sum;
     }
 }
